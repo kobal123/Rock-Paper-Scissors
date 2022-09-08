@@ -1,0 +1,55 @@
+*{
+    border: thin solid red;
+}
+
+body,html {
+    height: 100%;
+    margin: 0;
+
+}
+
+
+.img-body{
+display: flex;
+align-items: center;
+justify-content: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -1%);
+    transform: translate(-50%, 40%);
+
+}
+
+
+.opponent-choice{
+    transform: scaleY(-1) translate(-50%, 120%);
+    
+}
+
+
+  img {
+    width: 13em;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: 0.1em solid black;
+    margin: 1em;
+  }
+
+#rock:hover{
+    border: 0.3em solid black;
+    cursor: pointer;
+    
+  }
+
+  #scissors:hover{
+    border: 0.3em solid black;
+    cursor: pointer;
+    
+  }
+
+  #paper:hover{
+    border: 0.3em solid black;
+    cursor: pointer;
+    
+  }

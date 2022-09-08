@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Rock Paper Scissors</title>
+</head>
+
+<body>
+
+    <div class="result-container">
+        <div style="display: block;">
+            <span>Nyert:</span><span id="won-amount"> </span>
+        </div>
+        <div>
+            <span>Vesztett: </span>
+            <span id="lost-amount"></span>
+        </div>
+        <div>
+            <span>Döntetlen: </span>
+            <span id="draw-amount"></span>
+        </div>
+    </div>
+
+
+    <div class="img-body opponent-choice">
+        <div class="container">
+            <img src="rock.png" alt="rock" id = "opponent-rock">
+            <img src="paper.png" alt="paper" id = "opponent-paper">
+            <img src="scissors.png" alt="scissors" id = "opponent-scissors">
+        </div>
+    </div>
+
+<div class="img-body">
+    <div class="container">
+        <img src="rock.png" alt="rock" id="rock">
+        <img src="paper.png" alt="paper" id="paper">
+        <img src="scissors.png" alt="scissors" id="scissors">
+    </div>
+</div>
+
+<script src="rps.js"></script>
+    
+</body>
+
+</html>
