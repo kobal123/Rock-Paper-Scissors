@@ -2,39 +2,64 @@ let WON = 0;
 let LOST = 0;
 let DRAW = 0;
 
+const PAPER = "paper";
+const ROCK = "rock";
+const SCISSORS = "scissors";
+
 const rockPaperScissor = ["rock","paper","scissors"];
 
 const chooseRandom = (target) =>{
     const randomElement = rockPaperScissor[Math.floor(Math.random() * rockPaperScissor.length)];
+
+    let gameResult = "draw";
+
+
+    const playerWon = ()=>{
+        gameResult = "won";
+        WON += 1;
+    }
+
+    const playerDraw = ()=>{
+        gameResult = "draw";
+        DRAW += 1;
+    }
+
+    const playerLost = ()=>{
+        gameResult = "lost";
+        LOST += 1;
+    }
+
+
     switch(target){
         case rock:
-            if(randomElement === "paper")
-                LOST += 1;
-            else if(randomElement === "scissors")
-                WON += 1;
+            if(randomElement === PAPER)
+                playerLost();
+            else if(randomElement === SCISSORS)
+                playerWon();
             else
-                DRAW += 1;
+                playerDraw();
             break;
         case paper:
-            if(randomElement === "scissors")
-                LOST += 1;
-            else if(randomElement === "rock")
-                WON += 1;
+            if(randomElement === SCISSORS)
+                playerLost();
+            else if(randomElement === ROCK)
+                playerWon();
             else
-                DRAW += 1;
+                playerDraw();
             break;
         case scissors:
-            if(randomElement === "rock")
-                LOST += 1;
-            else if(randomElement === "paper")
-                WON += 1;
+            if(randomElement === ROCK)
+                playerLost();
+            else if(randomElement === PAPER)
+                playerWon();
             else
-                DRAW += 1;
+                playerDraw();
             break;
         default:
             console.log("error");
     }
-    return randomElement;
+    return {"element": randomElement,
+            "gameResult": gameResult};
 }
 
 
@@ -44,17 +69,42 @@ const game = (event) =>{
     }
     inProgress = true;
     const target = event.target;
-    const element = chooseRandom(target);
-    updateOpponentChoice(element);
+    const results = chooseRandom(target);
+    updateOpponentChoice(results["element"]);
     updateResults();
+    showToast(results["gameResult"])
+    
 }
 
+
+const showToast = (gameResult) =>{
+      // Get the snackbar DIV
+  var toast = document.getElementById("snackbar");
+
+  // Add the "show" class to DIV
+    switch(gameResult){
+        case "won":
+            toast.innerText = "Nyertél";
+            break
+        case "lost":
+            toast.innerText = "Vesztettél";
+            break;
+        case "draw":
+            toast.innerText = "Döntetlen";
+            break; 
+    }
+
+      toast.className = "show";
+
+  // After 3 seconds, remove the show class from DIV
+  setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+}
 
 const revertBorderChange = (element) => {
     setTimeout(function () {
         element.style.border = imageBorderStyleBefore;
         inProgress = false;
-    }, 2000);
+    }, 3000);
 }
 
 const updateOpponentChoice=(element)=>{
